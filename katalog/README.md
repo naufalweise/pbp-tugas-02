@@ -97,3 +97,8 @@ gh secret set HEROKU_APP_NAME
 gh secret set HEROKU_API_KEY
 ```
 3. Push pekerjaan anda ke github.
+
+## Unit Testing
+Saya mengimplementasikan dua unit-test di proyek ini.
+1. Pertama, test katalog count yang memastikan katalog memiliki jumlah yang sama sesuai item yang telah di add.
+2. Kedua, test validasi rating yang memastikan bahwa semua item memiliki rating di range [0, 10].
