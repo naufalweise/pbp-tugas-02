@@ -41,13 +41,15 @@ Apabila kamu ingin menggunakan repositori ini sebagai repositori awalan yang nan
    pip install -r requirements.txt
    ```
 
-6. Jalankan aplikasi Django menggunakan server pengembangan yang berjalan secara
+6. Lakukan migrasi dan load data (lihat di [Procfile](./Procfile))
+
+7. Jalankan aplikasi Django menggunakan server pengembangan yang berjalan secara
    lokal:
 
    ```shell
    python manage.py runserver
    ```
-7. Bukalah `http://localhost:8000` pada browser favoritmu untuk melihat apakah aplikasi sudah berjalan dengan benar.
+8. Bukalah `http://localhost:8000` pada browser favoritmu untuk melihat apakah aplikasi sudah berjalan dengan benar.
 
 ## Contoh Deployment 
 
