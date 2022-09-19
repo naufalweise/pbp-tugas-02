@@ -1,0 +1,13 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": false,
+            "title": "Title 1",
+            "rating": 1,
+            "release_date": "2022-09-19",
+            "review": "Jelek jangan ditonton!"
+        }
+    }
+]
