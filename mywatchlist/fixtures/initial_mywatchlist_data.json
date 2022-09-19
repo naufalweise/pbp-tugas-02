@@ -6,7 +6,106 @@
             "watched": false,
             "title": "Title 1",
             "rating": 1,
-            "release_date": "2022-09-19",
+            "release_date": "2022-09-01",
+            "review": "Jelek jangan ditonton!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": false,
+            "title": "Title 2",
+            "rating": 2,
+            "release_date": "2022-09-02",
+            "review": "Review 2"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": false,
+            "title": "Title 3",
+            "rating": 3,
+            "release_date": "2022-09-03",
+            "review": "Review 3"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": false,
+            "title": "Title 4",
+            "rating": 4,
+            "release_date": "2022-09-04",
+            "review": "Review 4"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": false,
+            "title": "Title 5",
+            "rating": 5,
+            "release_date": "2022-09-05",
+            "review": "Jelek jangan ditonton!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": false,
+            "title": "Title 6",
+            "rating": 1,
+            "release_date": "2022-09-06",
+            "review": "Jelek jangan ditonton!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": false,
+            "title": "Title 7",
+            "rating": 2,
+            "release_date": "2022-09-07",
+            "review": "Jelek jangan ditonton!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": false,
+            "title": "Title 8",
+            "rating": 3,
+            "release_date": "2022-09-08",
+            "review": "Jelek jangan ditonton!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": false,
+            "title": "Title 9",
+            "rating": 4,
+            "release_date": "2022-09-09",
+            "review": "Jelek jangan ditonton!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": false,
+            "title": "Title 10",
+            "rating": 5,
+            "release_date": "2022-09-10",
             "review": "Jelek jangan ditonton!"
         }
     }
