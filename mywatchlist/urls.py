@@ -8,4 +8,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('json/', views.json, name='json'),
     path('xml/', views.xml, name='xml'),
+    path('html/', views.html, name='html'),
 ]
