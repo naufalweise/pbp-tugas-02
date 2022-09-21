@@ -4,6 +4,14 @@
 
   <h1>My Watchlist</h1>
 
+  <p>
+    {% if watched_count == mywatchlist|length%}
+      Selamat, kamu sudah banyak menonton!
+    {% else %}
+      Wah, kamu masih sedikit menonton!
+    {% endif %}
+  </p>
+
   <table>
     <thead>
       <tr>
