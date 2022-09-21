@@ -55,7 +55,9 @@ Apabila kamu ingin menggunakan repositori ini sebagai repositori awalan yang nan
 ## How to Run
 
 1. Activate env
-2. runserver
+2. Install requirements
+3. Migrate (run migrate.sh)
+4. runserver
 
 ## Contoh Deployment 
 
