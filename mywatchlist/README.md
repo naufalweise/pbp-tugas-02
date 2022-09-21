@@ -33,7 +33,6 @@ eXtensible Markup Language (XML)
     </casts>
 </movie>
 ```
-- lebih lambat untuk dikonvert ke objek javascript
 - memiliki size yang relatif lebih besar
 - Akses menggunakan XML DOM dengan struktur node-tree.
 
@@ -62,11 +61,13 @@ django-adming startapp mywatchlist
 - Buatlah model MyWatchList pada app tersebut. Sesuaikan jenis field dengan data yang akan di simpan.
 - Jalankan makemigrations & migrate
 - Buatlah data awal dengan menambahkan json di fixture app ini.
-- Buatlah [script](../migrate.sh) untuk migrate & load data fixtures. Jalankan script ini di lokal.
-- Di Procfile, panggil script migrate tiap release.
+- Buatlah [script](../build.sh) untuk migrate & load data fixtures & mempersiapkan static files. Jalankan script ini di lokal.
+- Di Procfile, panggil script tersebut tiap release.
 - Buatlah views untuk json, xml, html.
+- Buat template html untuk menampilkan data.
 - Editlah urls.py pada app untuk routing json, xml, html.
 - Include urls app pada urls.py project.
+- Buat unit test di mywatchlist/tests.py. Gunakan kelas client untuk mengecek respons dari tiap endpoint. Jalankan dengan `python manage.py test`
 - Commit & Push
 
 ## Screenshots Postman
