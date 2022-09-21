@@ -18,3 +18,11 @@ def json(request):
 
 def xml(request):
     return HttpResponse(serializers.serialize("xml", MyWatchList.objects.all()), content_type="application/xml")
+
+
+def xml_by_id(request, id):
+    return HttpResponse(serializers.serialize("xml", MyWatchList.objects.filter(pk=id)), content_type="application/xml")
+
+    
+def json_by_id(request, id):
+    return HttpResponse(serializers.serialize("json", MyWatchList.objects.filter(pk=id)), content_type="application/json")
