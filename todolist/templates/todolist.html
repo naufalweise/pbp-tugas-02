@@ -9,6 +9,7 @@
     <h1>Task List</h1>
     <ul class="navigation">
         <li><a href="{% url 'todolist:create task' %}">Create Task</a></li>
+        <li>Logged as {{ username }}</li>
         <li><a href="{% url 'todolist:logout' %}">Logout</a></li>
     </ul>
     <table>

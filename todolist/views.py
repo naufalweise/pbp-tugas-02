@@ -8,10 +8,10 @@ from .forms import TaskForm
 
 # Create your views here.
 
-
+@login_required(login_url='/todolist/login')
 def index(request):
-    task_list = Task.objects.all()
-    context = {'task_list': task_list}
+    task_list = Task.objects.filter(user=request.user)
+    context = {'task_list': task_list, 'username': request.user.username}
     return render(request, 'todolist.html', context)
 
 
