@@ -1,7 +1,13 @@
+
+# Link
+Heroku <https://naufalweise-pbp-tugas-02.herokuapp.com/todolist>
+
 # CSRF Token
 CSRF token berfungsi untuk menghindari serangan CSRF. Cross Site Requst Forgeries adalah attack yang membuat user melakukan aksi yang tak diinginkan dalam suatu website. Attack yang memanfaatkan privilage user yang sudah terautentikasi ini, terjadi ketika user membuka link malicious yang membuat user mengirim request pada website tanpa sepengetahuan user.
 
 CSRF token adalah kode yang digenerate oleh django dan disisipkan di field hidden di form POST. Token ini unik antar user dan antar tiap request form. Saat django menerima form post, django akan memvalidasi token yang dikirim beserta form tersebut. Token ini menjamin bahwa form yang disent ke django adalah form yang dibuat oleh django itu sendiri, bukan yang dibuat attacker.
+
+Tanpa CSRF Token, site kita tidak terproteksi dari serangan CSRF. Attacker bisa saja membuat form yang dapat melakukan aksi malicious ke website kita.
 
 # Membuat Form Tanpa Generator
 Membuat form bisa saja secara manual, tak harus menggunakan generator. Caranya dengan menggunakan atribut-atribut pada form. Di dalam object form, terdapat atribut tiap field, di dalam objek tiap field, terdapat atribut-atribut form seperti input element, error message, label, dan lain-lain.
