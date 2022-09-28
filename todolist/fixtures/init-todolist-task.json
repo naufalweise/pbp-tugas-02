@@ -1,0 +1,62 @@
+[
+  {
+    "model": "todolist.task",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "date": "2022-09-27",
+      "title": "Task 1",
+      "description": "Deskripsi Task 1"
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "date": "2022-09-27",
+      "title": "Task 2",
+      "description": "Deskripsi Task 2"
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "date": "2022-09-27",
+      "title": "Task 3",
+      "description": "Deskripsi task 3"
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "date": "2022-09-27",
+      "title": "Task 4",
+      "description": "Deskripsi task 4"
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "date": "2022-09-27",
+      "title": "Task 5",
+      "description": "Deskripsi task 5"
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 6,
+    "fields": {
+      "user": 2,
+      "date": "2022-09-27",
+      "title": "Task 6",
+      "description": "Deskripsi task 6"
+    }
+  }
+]
