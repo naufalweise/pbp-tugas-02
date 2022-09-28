@@ -8,5 +8,7 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('create-task', views.create_task, name='create task'),
-    path('logout', views.logout, name='logout')
+    path('logout', views.logout, name='logout'),
+    path('delete', views.delete, name='delete'),
+    path('toggle', views.toggle_finish, name='toggle finish'),
 ]

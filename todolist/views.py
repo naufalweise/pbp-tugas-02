@@ -2,6 +2,7 @@ from datetime import date
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.contrib.auth.forms import UserCreationForm
 from .models import Task
 from .forms import TaskForm
@@ -55,8 +56,25 @@ def create_task(request):
             new_task = Task(
                 title=form.cleaned_data['title'], description=form.cleaned_data['description'], user=request.user, date=date.today())
             new_task.save()
-            messages.success(request, 'Berhasil membuat task')
+            messages.success(request, 'Added one task')
             return redirect('todolist:index')
     form = TaskForm()
     context = {'form': form}
     return render(request, 'create-task.html', context)
+
+
+@login_required(login_url='/todolist/login')
+@require_POST
+def delete(request):
+    task = Task.objects.get(pk=request.POST['pk'])
+    task.delete()
+    messages.success(request, "Deleted one task")
+    return redirect('todolist:index')
+
+@login_required(login_url='/todolist/login')
+@require_POST
+def toggle_finish(request):
+    task = Task.objects.get(pk=request.POST['pk'])
+    task.is_finished = not task.is_finished
+    task.save()
+    return redirect('todolist:index')
