@@ -39,3 +39,6 @@ Alur data dalam create-task:
 - Buatlah view index untuk melihat todolist user, dan create-task untuk membuat task. Buat juga templatenya.
 - Tambahkan routing view-view yang sudah dibuat ke urls.py aplikasi.
 - Untuk membuat data dummy, registrer dua user yang berbeda. Di tiap user, buat tiga task. Setelah itu, lakukan dumpdata, dan ekstrak record user & task ke json file. Taruh json file ini kedalam fixture.
+
+# User
+user dan pass ada di [sini](./user.txt)
