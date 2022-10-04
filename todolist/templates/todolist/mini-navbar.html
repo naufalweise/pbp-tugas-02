@@ -15,9 +15,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if username %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'todolist:logout' %}">Logout</a>
-        </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'todolist:register' %}">Register</a>
@@ -28,7 +25,18 @@
         {% endif %}
       </ul>
       {% if username %}
-      <span class="navbar-text">logged as{{ username }}</span>
+      <span class="navbar-text">
+        
+        {{ username }}
+      </span>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+<a class="nav-link" href="{% url 'todolist:logout' %}">
+          <span class="material-symbols-outlined">logout</span>
+        </a>
+        </li> 
+      </ul>
+      
       {% endif %}
     </div>
   </div>
