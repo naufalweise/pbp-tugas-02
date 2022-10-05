@@ -1,48 +1,40 @@
-{% extends 'base.html' %} {% block meta %}
+{% extends 'todolist/base.html' %} 
+{% load static %}
+{% block meta %}
 <title>Login</title>
-{% endblock meta %} {% block content %}
+<link rel="stylesheet" href="{% static 'todolist/css/login.css' %}" />
+{% endblock meta %}
+{% block content %}
 
-<div class="container">
-  <div class="row">
-    <div class="col col-lg-6">
-      <h1>Login</h1>
-      <form method="POST" action="" class="mb-3">
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
+<div class="page">
+<main class="form-signin w-100 m-auto text-center">
+  <form method="POST">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <div class="form-floating">
           <input
             type="text"
             name="username"
             placeholder="Username"
             class="form-control"
           />
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
           <input
             type="password"
             name="password"
             placeholder="Password"
             class="form-control"
           />
-        </div>
-        <input class="btn btn-primary" type="submit" value="Login" />
-      </form>
-
-      {% if messages %}
-      <ul class="mb-3">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-      <p>
-         Belum mempunyai akun?
-        <a href="{% url 'todolist:register' %}">Buat Akun</a>
-      </p>
+      <label for="floatingPassword">Password</label>
     </div>
-  </div>
-
-  {% endblock content %}
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+    <p class="mt-5 mb-3 text-muted">Don't have an account? 
+      <a href="{% url 'todolist:register' %}">Register here</a>
+    </p>
+  </form>
+</main>
 </div>
+
+{% endblock content %}

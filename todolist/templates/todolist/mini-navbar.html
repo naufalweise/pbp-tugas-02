@@ -1,43 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mini-navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'todolist:index' %}">Todolist</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {% if username %}
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'todolist:register' %}">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'todolist:login' %}">Login</a>
-        </li>
-        {% endif %}
+<div class="container">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <a href="#" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <span class="fs-4">Todolist</span>
+      </a>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{% url 'todolist:index' %}" class="nav-link px-2">Home</a></li>
       </ul>
-      {% if username %}
-      <span class="navbar-text">
-        
-        {{ username }}
-      </span>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-<a class="nav-link" href="{% url 'todolist:logout' %}">
+
+      <div class="col-md-3 text-end">
+        {% if username %}
+        <div> <span>{{username}}</span>
+<a class="btn" href="{% url 'todolist:logout' %}">
           <span class="material-symbols-outlined">logout</span>
         </a>
-        </li> 
-      </ul>
-      
-      {% endif %}
-    </div>
+        </div>
+        
+        {% else %} 
+        <a class="btn btn-outline-primary me-2" href="{% url 'todolist:login' %}">Login</a>
+        <a class="btn btn-primary" href="{% url 'todolist:register' %}">Register</a> 
+        {% endif %}
+      </div>
+    </header>
   </div>
-</nav>

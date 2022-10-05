@@ -1,11 +1,36 @@
 {% extends 'todolist/base.html' %}
 
 {% block content %}
+<div class="container py-5">
 <h1>Create Task</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+     <form method="POST" >
+        
+            {% csrf_token %}  
+            <div class="col-12">
+                <label for="title" class="form-label">Title</label>
+                <input name="title" type="text" class="form-control is-{{ form.title.errors|yesno:"invalid,valid," }}" id="title" placeholder="Title" required>
+                <div class="invalid-feedback">
+                    {{form.title.errors}}
+                </div>
+                <div class="form-text">
+                    {{form.title.help_text}}
+                </div>
+            </div>
 
+            <div class="col-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea name="description" class="form-control is-{{ form.description.errors|yesno:"invalid,valid" }}" id="desc" placeholder="Enter description" required></textarea>
+              <div class="invalid-feedback">
+                {{form.description.errors}}
+              </div>
+              <div class="form-text">
+                {{form.description.help_text}}
+              </div>
+
+            </div>
+
+          <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Create</button>
+        </form>
+
+    </div>
 {% endblock %}
