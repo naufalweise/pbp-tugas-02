@@ -42,3 +42,55 @@ Alur data dalam create-task:
 
 # User
 user dan pass ada di [sini](./user.txt)
+
+# Tugas 5
+
+## Perbedaan Inline, Internal, External Style
+
+### Inline CSS
+Style inline berada pada atribut suatu elemen html.
+#### Kelebihan
+- Lebih cepat untuk ditulis. Cocok untuk quickfix. Tak perlu mencari file css nya.
+- Disupport aplikasi pembuka email. Terkadang aplikasi email memblock penggunaan external css untuk menghindari spam.
+### Kelemahan
+- Style yang panjang menjadi sulit dibaca oleh programmer, dan lebih susah di mantain.
+- Tidak bisa di reuse
+- Meningkatkan size page html
+
+### Internal CSS
+Syle pada internal css berada pada elemen style pada suatu page html.
+
+#### Kelebihan
+- Lebih clean, karena terpisah antara style dan elemen html.
+- Bisa di reuse antar elemen, tapi hanya untuk satu page.
+#### Kelemahan
+- Tidak bisa di reuse untuk page yang lain
+- Meningkatkan size page html
+
+### External CSS
+Style pada external css berada pada file terpisah dari html
+#### Kelebihan
+- Paling clean, karena file styling terpisah dari file html.
+- Dapat direuse antar page html
+- Dapat dicache 
+#### Kelemahan
+- Style tidak terapply ke page sampai file external css terload sepenuhnya.
+
+
+## Tag HTML
+1. h1, h2, h3, ...:
+Heading, digunakan untuk menulis judul.
+2. button:
+Tombol, digunakan untuk membuat tombol yang bisa diklik dan merespons dengan sesuatu.
+3. input:
+Elemen input, digunakan untuk membuat text field. Text field biasanya digunakan di dalam form.
+4. label
+Elemen label, digunakan untuk memberi keterangan pada text field.
+5. form: digunakan untuk membuat form yang berisi beberapa field. Form dapat mengirim data-data dari field tersebut ke server.
+
+## Cara implementasi checklist
+1. Membaca dokumentasi bootstrap
+2. Taruh Link file bootstrap ke base template
+3. Pastikan tiap page sudah extend ke base template
+4. Tambahkan kelas bootstrap pada elemen yang ingin di style
+5. buat external file css, link ke page yang diinginkan. Tambahkan additonal css agar page lebih cantik jika bootstrap masih belum cukup.
