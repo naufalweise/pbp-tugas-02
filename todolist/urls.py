@@ -11,4 +11,5 @@ urlpatterns = [
     path('create-task', views.create_task, name='create task'),
     path('logout', views.logout, name='logout'),
     path('json', views.get_task_list, name="get task list"),
+    path('add', views.create_task),
 ]
