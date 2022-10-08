@@ -1,4 +1,6 @@
 from datetime import date
+from django.http import HttpResponse
+from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
@@ -6,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Task
 from .forms import TaskForm
 
+from django.core import serializers
 # Create your views here.
 
 @login_required(login_url='/todolist/login')
@@ -60,3 +63,8 @@ def create_task(request):
     form = TaskForm()
     context = {'form': form}
     return render(request, 'create-task.html', context)
+
+@login_required(login_url='/todolist/login')
+def get_task_list(request):
+    task_list = Task.objects.filter(user=request.user);
+    return HttpResponse(serializers.serialize("json", task_list), content_type="application/json")

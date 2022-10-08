@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from . import views
 
@@ -8,5 +9,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('create-task', views.create_task, name='create task'),
-    path('logout', views.logout, name='logout')
+    path('logout', views.logout, name='logout'),
+    path('json', views.get_task_list, name="get task list"),
 ]
