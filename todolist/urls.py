@@ -12,4 +12,6 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('json', views.get_task_list, name="get task list"),
     path('add', views.create_task),
+    path('delete', views.delete, name='delete'),
+    path('toggle', views.toggle_finish, name='toggle finish'),
 ]

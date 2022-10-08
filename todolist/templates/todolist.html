@@ -1,34 +1,53 @@
-{% extends 'base.html' %}
+{% extends 'todolist/base.html' %}
+{% load static %}
 
 {% block meta %}
 <title>Task List</title>
-{% endblock meta %}
+<link rel="stylesheet" href="{% static 'todolist/css/todolist.css' %}" />
+{% endblock meta %} 
 
 {% block content %}
-<div>
-    <h1>Task List</h1>
-    <ul class="navigation">
-        <li><a href="{% url 'todolist:create task' %}">Create Task</a></li>
-        <li>Logged as {{ username }}</li>
-        <li><a href="{% url 'todolist:logout' %}">Logout</a></li>
-    </ul>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created at</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for task in task_list %}
-                <tr>
-                    <td>{{ task.title }}</td>
-                    <td>{{ task.description }}</td>
-                    <td>{{ task.date }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container py-5">
+<h1 class="mb-3">Task List</h1>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'todolist:create task' %}">Create Task</a>
+  </li>
+</ul>
+{% if messages %}
+<div class="d-flex flex-column gap-2">
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}}" role="alert">{{message}}</div>
+  {% endfor %}
 </div>
+{% endif %}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+{% for task in task_list %}
+  <div class="col">
+    <div class="card task-card">
+      <div class="card-body">
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text-small">{{ task.date }} | {{ task.is_finished|yesno:"Completed,Not Completed"}}</p>
+        <p class="card-text">{{ task.description }}</p>
+        <div class="d-flex gap-1">
+          <form method="post" action="{% url 'todolist:toggle finish' %}">
+            {% csrf_token %}
+            <input type="number" name="pk" value="{{ task.pk }}" hidden />
+            <input type="submit" value="{{ task.is_finished|yesno:"Undone,Done"}}" class="btn btn-secondary"
+            />
+          </form>
+          <form method="POST" action="{% url 'todolist:delete' %}">
+            {% csrf_token %}
+            <input type="number" name="pk" value="{{ task.pk }}" hidden />
+            <input type="submit" value="Delete"  class="btn btn-danger" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+
 {% endblock content %}
