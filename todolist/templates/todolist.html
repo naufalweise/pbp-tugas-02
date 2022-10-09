@@ -11,6 +11,9 @@
 <h1 class="mb-3">Task List</h1>
 <ul class="nav nav-pills">
   <li class="nav-item">
+    <button onclick="openAddTaskModal()" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add Task</button>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="{% url 'todolist:create task' %}">Create Task</a>
   </li>
 </ul>
@@ -50,4 +53,66 @@
 </div>
 </div>
 
+<!--Add Task Modal -->
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addTaskModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+        
+          {% csrf_token %}  
+            <div class="col-12">
+                <label for="title" class="form-label">Title</label>
+                <input name="title" type="text" class="form-control is-{{ form.title.errors|yesno:"invalid,valid," }}" id="title" placeholder="Title" required>
+                <div class="invalid-feedback">
+                    {{form.title.errors}}
+                </div>
+                <div class="form-text">
+                    {{form.title.help_text}}
+                </div>
+            </div>
+
+            <div class="col-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea name="description" class="form-control is-{{ form.description.errors|yesno:"invalid,valid" }}" id="desc" placeholder="Enter description" required></textarea>
+              <div class="invalid-feedback">
+                {{form.description.errors}}
+              </div>
+              <div class="form-text">
+                {{form.description.help_text}}
+              </div>
+
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="submitAddTaskForm()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock content %}
+
+{% block script %}
+<script>
+  $(document).ready(() => {
+    $("#addTaskForm").submit(false);
+    console.log("Disabled")
+  })
+
+  function openAddTaskModal() {
+    console.log("Open Add Task Model");
+  }
+
+  function submitAddTaskForm() {
+    console.log("SUbmit");
+    $("#addTaskModal").modal("hide");
+  }
+</script>
+{% endblock script %}
