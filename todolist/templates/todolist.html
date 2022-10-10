@@ -40,11 +40,7 @@
             <input type="submit" value="{{ task.is_finished|yesno:"Undone,Done"}}" class="btn btn-secondary"
             />
           </form>
-          <form method="POST" action="{% url 'todolist:delete' %}">
-            {% csrf_token %}
-            <input type="number" name="pk" value="{{ task.pk }}" hidden />
-            <input type="submit" value="Delete"  class="btn btn-danger" />
-          </form>
+          <input type="submit" value="Delete"  class="btn btn-danger" onclick="deleteTask({{ task.pk }})" />
         </div>
       </div>
     </div>
@@ -125,10 +121,13 @@
     $("#addTaskModal").modal("hide");
   }
   function deleteTask(id) {
+    console.log("DELETE")
     $.ajax({
       type: "POST",
-      url: actionUrl,
-      data: {id: id, }
+      url: "/todolist/delete/" + id,
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
+    }).done((data) => {
+      renderTasklist();
     })
   }
   function renderTasklist() {

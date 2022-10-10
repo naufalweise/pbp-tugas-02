@@ -72,11 +72,11 @@ def get_task_list(request):
 
 @login_required(login_url='/todolist/login')
 @require_POST
-def delete(request):
-    task = Task.objects.get(pk=request.POST['pk'])
+def delete(request, id):
+    task = Task.objects.get(pk=id)
     task.delete()
     messages.success(request, "Deleted one task")
-    return redirect('todolist:index')
+    return HttpResponse(status=200)
 
 @login_required(login_url='/todolist/login')
 @require_POST
