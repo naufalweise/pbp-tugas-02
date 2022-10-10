@@ -62,7 +62,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="POST">
+        <form id="addTaskForm" method="POST">
         
           {% csrf_token %}  
             <div class="col-12">
@@ -111,8 +111,20 @@
   }
 
   function submitAddTaskForm() {
+    const actionUrl="/todolist/add"
     console.log("SUbmit");
+    const form = $("#addTaskForm");
+    $.ajax({
+        type: "POST",
+        url: actionUrl,
+        data: form.serialize(),
+    }).done(function (data) {
+        renderTasklist();
+    });
     $("#addTaskModal").modal("hide");
+  }
+  function renderTasklist() {
+    console.log("RENDER")
   }
 </script>
 {% endblock script %}
