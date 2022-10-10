@@ -119,9 +119,17 @@
         url: actionUrl,
         data: form.serialize(),
     }).done(function (data) {
+        form.trigger("reset");
         renderTasklist();
     });
     $("#addTaskModal").modal("hide");
+  }
+  function deleteTask(id) {
+    $.ajax({
+      type: "POST",
+      url: actionUrl,
+      data: {id: id, }
+    })
   }
   function renderTasklist() {
     console.log("RENDER")
