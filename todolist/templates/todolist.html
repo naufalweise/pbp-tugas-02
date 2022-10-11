@@ -25,26 +25,8 @@
 </div>
 {% endif %}
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div id="task-list" class="row row-cols-1 row-cols-md-3 g-4">
 {% for task in task_list %}
-  <div class="col">
-    <div class="card task-card">
-      <div class="card-body">
-        <h5 class="card-title">{{ task.title }}</h5>
-        <p class="card-text-small">{{ task.date }} | {{ task.is_finished|yesno:"Completed,Not Completed"}}</p>
-        <p class="card-text">{{ task.description }}</p>
-        <div class="d-flex gap-1">
-          <form method="post" action="{% url 'todolist:toggle finish' %}">
-            {% csrf_token %}
-            <input type="number" name="pk" value="{{ task.pk }}" hidden />
-            <input type="submit" value="{{ task.is_finished|yesno:"Undone,Done"}}" class="btn btn-secondary"
-            />
-          </form>
-          <input type="submit" value="Delete"  class="btn btn-danger" onclick="deleteTask({{ task.pk }})" />
-        </div>
-      </div>
-    </div>
-  </div>
 {% endfor %}
 </div>
 </div>
@@ -98,8 +80,9 @@
 {% block script %}
 <script>
   $(document).ready(() => {
+    console.log("Init");
     $("#addTaskForm").submit(false);
-    console.log("Disabled")
+    fetchAndRenderTasklist();
   })
 
   function openAddTaskModal() {
@@ -116,7 +99,7 @@
         data: form.serialize(),
     }).done(function (data) {
         form.trigger("reset");
-        renderTasklist();
+        fetchAndRenderTasklist();
     });
     $("#addTaskModal").modal("hide");
   }
@@ -127,11 +110,44 @@
       url: "/todolist/delete/" + id,
       data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
     }).done((data) => {
-      renderTasklist();
+      fetchAndRenderTasklist();
     })
   }
-  function renderTasklist() {
-    console.log("RENDER")
+  function fetchAndRenderTasklist() {
+    $.ajax({
+      type: "GET",
+      url: "/todolist/json"
+    }).done((data) => {
+      console.log(data);
+      renderTasklist(data);
+    });
+  }
+  function renderTasklist(taskList) {
+    console.log("RENDER");
+    const taskListContainer = $('#task-list');
+    taskListContainer.empty();
+    taskList.forEach(task => {
+      const taskCard = `
+        <div class="col">
+          <div class="card task-card">
+            <div class="card-body">
+              <h5 class="card-title">${task.fields.title}</h5>
+              <p class="card-text-small">${task.fields.date} | ${ task.fields.is_finished ? "Completed" : "Not Completed"}</p>
+              <p class="card-text">${ task.fields.description }</p>
+              <div class="d-flex gap-1">
+                <form method="post" action="{% url 'todolist:toggle finish' %}">
+                  {% csrf_token %}
+                  <input type="number" name="pk" value="${ task.pk }" hidden />
+                  <input type="submit" value="${task.fields.is_finished ? "Undone" : "Done"}" class="btn btn-secondary" />
+                </form>
+                <input type="submit" value="Delete"  class="btn btn-danger" onclick="deleteTask(${ task.pk })" />
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      taskListContainer.append(taskCard);
+    });
   }
 </script>
 {% endblock script %}
