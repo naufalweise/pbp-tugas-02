@@ -113,6 +113,17 @@
       fetchAndRenderTasklist();
     })
   }
+  
+  function toggleTaskStatus(id) {
+    console.log("TOGGLE STATUS");
+    $.ajax({
+      type: "POST",
+      url: "/todolist/toggle",
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}', pk: id}
+    }).done((data) => {
+      fetchAndRenderTasklist();
+    })
+  }
   function fetchAndRenderTasklist() {
     $.ajax({
       type: "GET",
@@ -135,11 +146,7 @@
               <p class="card-text-small">${task.fields.date} | ${ task.fields.is_finished ? "Completed" : "Not Completed"}</p>
               <p class="card-text">${ task.fields.description }</p>
               <div class="d-flex gap-1">
-                <form method="post" action="{% url 'todolist:toggle finish' %}">
-                  {% csrf_token %}
-                  <input type="number" name="pk" value="${ task.pk }" hidden />
-                  <input type="submit" value="${task.fields.is_finished ? "Undone" : "Done"}" class="btn btn-secondary" />
-                </form>
+                <input type="submit" value="${task.fields.is_finished ? "Undone" : "Done"}" class="btn btn-secondary" onclick="toggleTaskStatus(${task.pk})" />
                 <input type="submit" value="Delete"  class="btn btn-danger" onclick="deleteTask(${ task.pk })" />
               </div>
             </div>
