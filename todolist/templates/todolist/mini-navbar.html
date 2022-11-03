@@ -11,9 +11,12 @@
       <div class="col-md-3 text-end">
         {% if username %}
         <div> <span>{{username}}</span>
-<a class="btn" href="{% url 'todolist:logout' %}">
-          <span class="material-symbols-outlined">logout</span>
-        </a>
+          <form action="{% url 'todolist:logout' %}" class="form-inline">
+            {% csrf_token %}
+            <button class="btn" type="submit" >
+              <span class="material-symbols-outlined">logout</span>
+            </a>
+          </form>
         </div>
         
         {% else %} 
